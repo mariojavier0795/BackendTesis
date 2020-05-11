@@ -15,15 +15,3 @@ class BackendApplication
 fun main(args: Array<String>) {
     runApplication<BackendApplication>(*args)
 }
-
-@RequestMapping("/servicios")
-@RestController
-class RestController {
-    @GetMapping("/prueba")
-    fun example() : ResponseEntity<String> {
-        return ResponseEntity<String>("Hello World!", HttpStatus.OK)
-    }
-
-}
-
-data class Cliente (val nombre : String, val apellido : String)
