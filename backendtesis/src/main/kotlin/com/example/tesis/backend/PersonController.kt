@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class PersonController(private val personRepository : PersonRepository) {
     @GetMapping("/searchPerson")
-    fun getSearchPerson() : List<Person> {
+    fun getSearchPerson() : List<Persona> {
         return personRepository.findAll();
     }
 }

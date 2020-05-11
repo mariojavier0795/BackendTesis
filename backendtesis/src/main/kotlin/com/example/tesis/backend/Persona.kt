@@ -5,8 +5,7 @@ import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
 @Entity
-@Table(name = "PERSONA")
-data class Person (
+data class Persona (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val cpersona: Int? = null,
