@@ -1,4 +1,4 @@
-package com.example.tesis.backend
+package com.example.tesis.backend.entity
 
 import java.util.*
 import javax.persistence.*
@@ -22,5 +22,7 @@ data class Persona (
         @get: NotBlank
         val telefono: String = "",
         @get: NotBlank
-        val direccion: String = ""
+        val direccion: String = "",
+        @OneToMany(mappedBy = "persona", cascade = arrayOf(CascadeType.ALL), fetch = FetchType.EAGER)
+        var user: List<Usuario> = emptyList()
 )
