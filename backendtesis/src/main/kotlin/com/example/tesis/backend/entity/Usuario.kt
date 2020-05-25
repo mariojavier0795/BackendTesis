@@ -5,6 +5,7 @@ import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
 @Entity
+@Table(name = "usuario")
 data class Usuario (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +16,10 @@ data class Usuario (
         val correo: String = "",
         @get: NotBlank
         val password: String? = "",
-        @ManyToOne
-        @JoinColumn(name = "CPERSONA")
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "cpersona", referencedColumnName="cpersona")
         var person: Persona? = null,
-        @ManyToOne
-        @JoinColumn(name = "CTIPOUSUARIO")
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "ctipousuario", referencedColumnName="ctipousuario")
         var tipoUsuario: TipoUsuario? = null
 )
