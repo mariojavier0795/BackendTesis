@@ -11,8 +11,10 @@ data class TipoUsuario (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val ctipousuario: Int? = null,
+
         @get: NotBlank
         val descripcion: String = "",
+
         @OneToMany(mappedBy = "tipoUsuario", fetch = FetchType.LAZY)
         @JsonIgnore
         var user: List<Usuario> = emptyList()
