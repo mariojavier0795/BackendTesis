@@ -1,10 +1,9 @@
 package com.example.tesis.backend.repository
 
-
-import com.example.tesis.backend.entity.User
+import com.example.tesis.backend.entity.UserRoles
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface UserRepository : JpaRepository<User, Long>{
+interface UserRolesRepository : JpaRepository<UserRoles, Long> {
 }
