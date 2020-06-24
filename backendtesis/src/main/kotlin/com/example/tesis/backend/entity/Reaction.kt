@@ -16,7 +16,7 @@ data class Reaction (
 
         @Lob
         @Column(name = "IMAGEN_REACCION")
-        var reactionImagen : List<Byte> = emptyList(),
+        var reactionImagen : ByteArray? = null,
 
         @OneToMany(mappedBy = "reaction", fetch = FetchType.LAZY)
         var lstReactionService : List<ReactionService> = emptyList()

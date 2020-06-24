@@ -14,7 +14,7 @@ data class Imagen (
 
         @Lob
         @Column(name = "IMAGEN")
-        var image : List<Byte> = emptyList(),
+        var image : ByteArray? = null,
 
         @Column(name = "DESCRIPCION_IMAGEN")
         var descriptionImagen : String? = "",

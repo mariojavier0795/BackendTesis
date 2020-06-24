@@ -41,9 +41,9 @@ data class User (
         @Column(name = "TELEFONO")
         var phone : String? = "",
 
-        @Lob
+        @Lob()
         @Column(name = "IMAGEN_USUARIO")
-        var userImage : List<Byte> = emptyList(),
+        var userImage : ByteArray? = null,
 
         @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         @JsonIgnore
