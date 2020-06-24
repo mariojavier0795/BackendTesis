@@ -12,5 +12,8 @@ data class Tag (
         var ctag: Int? = null,
 
         @Column(name = "NOMBRE_ETIQUETA")
-        var tagName : String? = ""
+        var tagName : String? = "",
+
+        @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY)
+        var lstServiceTag : List<ServiceTag> = emptyList()
 )

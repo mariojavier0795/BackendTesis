@@ -18,5 +18,8 @@ data class BranchOffice (
         var longitudeBranchOffice : Float? = null,
 
         @Column(name = "NOMBRE_SUCURSAL")
-        var nameBranchOffice : String? = ""
+        var nameBranchOffice : String? = "",
+
+        @OneToMany(mappedBy = "branchOffice", fetch = FetchType.LAZY)
+        var lstServiceBranch : List<ServiceBranch> = emptyList()
 )

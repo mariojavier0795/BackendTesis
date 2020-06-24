@@ -43,9 +43,18 @@ data class User (
 
         @Lob
         @Column(name = "IMAGEN_USUARIO")
-        var userImage : Blob? = null,
+        var userImage : List<Byte> = emptyList(),
 
         @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         @JsonIgnore
-        var lstUserRole: List<UserRoles> = emptyList()
+        var lstUserRole : List<UserRoles> = emptyList(),
+
+        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+        var lstCommentary : List<Commentary> = emptyList(),
+
+        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+        var lstService : List<Service> = emptyList(),
+
+        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+        var lstReservation : List<Reservation> = emptyList()
 )
