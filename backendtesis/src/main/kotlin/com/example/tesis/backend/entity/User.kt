@@ -1,7 +1,6 @@
 package com.example.tesis.backend.entity
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import java.sql.Blob
 import java.util.*
 import javax.persistence.*
 

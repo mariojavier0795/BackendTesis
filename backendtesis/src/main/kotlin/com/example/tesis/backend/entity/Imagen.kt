@@ -1,6 +1,5 @@
 package com.example.tesis.backend.entity
 
-import java.sql.Blob
 import javax.persistence.*
 
 @Entity

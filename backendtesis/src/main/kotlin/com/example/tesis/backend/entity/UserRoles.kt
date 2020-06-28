@@ -1,6 +1,5 @@
 package com.example.tesis.backend.entity
 
-import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity
