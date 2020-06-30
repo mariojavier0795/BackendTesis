@@ -9,13 +9,13 @@ data class UserRoles (
         @Id
         @Column(name = "CROLUSUARIO")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var cuserRole: Int? = null,
+        val cuserRole: Int? = null,
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CROL", referencedColumnName="CROL")
-        var role: Role? = null,
+        val role: Role? = null,
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CUSUARIO", referencedColumnName="CUSUARIO")
-        var user: User? = null
+        val user: User? = null
 )

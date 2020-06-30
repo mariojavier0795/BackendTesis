@@ -10,12 +10,12 @@ data class Role (
         @Id
         @Column(name = "CROL")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var crole: Int? = null,
+        val crole: Int? = null,
 
         @Column(name = "DESCRIPCION_ROL")
-        var roleDescription : String? = "",
+        val roleDescription : String? = "",
 
         @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
         @JsonIgnore
-        var lstUserRole: List<UserRoles> = emptyList()
+        val lstUserRole: List<UserRoles> = emptyList()
 )

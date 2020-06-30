@@ -10,19 +10,19 @@ data class Commentary (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "CCOMENTARIO")
-        var ccommentary : Int? = null,
+        val ccommentary : Int? = null,
 
         @Column(name = "DESCRIPCION_COMENTARIO")
-        var descriptionComment : String? = "",
+        val descriptionComment : String? = "",
 
         @Column(name = "FCOMENTARIO")
-        var fcomment : Date? = null,
+        val fcomment : Date? = null,
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CSERVICIO", referencedColumnName = "CSERVICIO")
-        var service : Service? = null,
+        val service : Service? = null,
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CUSUARIO", referencedColumnName = "CUSUARIO")
-        var user : User? = null
+        val user : User? = null
 )

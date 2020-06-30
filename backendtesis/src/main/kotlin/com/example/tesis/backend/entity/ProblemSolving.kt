@@ -9,12 +9,12 @@ data class ProblemSolving (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "CSOLUCIONPROBLEMAS")
-        var cproblemSolving : Int? = null,
+        val cproblemSolving : Int? = null,
 
         @Column(name = "DESCRIPCION_SOLUCION")
-        var descriptionProblem : String? = "",
+        val descriptionProblem : String? = "",
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CPROBLEMASERVICIOARREGLAR", referencedColumnName = "CPROBLEMASERVICIOARREGLAR")
-        var serviceProblemFix : ServiceProblemFix? = null
+        val serviceProblemFix : ServiceProblemFix? = null
 )

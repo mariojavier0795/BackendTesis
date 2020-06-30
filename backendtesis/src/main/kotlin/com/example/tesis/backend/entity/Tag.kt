@@ -9,11 +9,11 @@ data class Tag (
         @Id
         @Column(name = "CETIQUETAS")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var ctag: Int? = null,
+        val ctag: Int? = null,
 
         @Column(name = "NOMBRE_ETIQUETA")
-        var tagName : String? = "",
+        val tagName : String? = "",
 
         @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY)
-        var lstServiceTag : List<ServiceTag> = emptyList()
+        val lstServiceTag : List<ServiceTag> = emptyList()
 )

@@ -14,21 +14,22 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class UserController(private val userRepository : UserRepository) {
 
-    @PostMapping("/validateUser", produces= arrayOf(MediaType.APPLICATION_JSON_VALUE))
-    fun getSearchUser(@RequestBody() bodyRequestUser : User) : ResponseEntity<Any> {
-        val hashMap: HashMap<String, Any> = HashMap()
+    val jsonMap: HashMap<String, Any> = HashMap()
+
+    @GetMapping("/loginUser")
+    fun loginUser(@RequestParam() parameters: Map<String, String>) : ResponseEntity<Any> {
         return try {
-            val listResponseUser = userRepository.findUser(bodyRequestUser.username, bodyRequestUser.password)
-            hashMap["Array"] = listResponseUser
-            hashMap["Status"] = "True"
+            val listResponseUser = userRepository.findUser(parameters.get("username"), parameters.get("password"))
+            jsonMap["Array"] = listResponseUser
+            jsonMap["Status"] = "True"
             if (listResponseUser.isEmpty()) {
-                hashMap["Message"] = "Usuario y/o contraseña están incorrectos"
-                hashMap["Status"] = "False"
+                jsonMap["Message"] = "Usuario y/o contraseña están incorrectos"
+                jsonMap["Status"] = "False"
             }
-            ResponseEntity(hashMap, HttpStatus.OK)
+            ResponseEntity(jsonMap, HttpStatus.OK)
         } catch (e: Exception) {
-            hashMap["Error message"] = e.message.toString()
-            ResponseEntity(hashMap, HttpStatus.BAD_REQUEST)
+            jsonMap["Error message"] = e.message.toString()
+            ResponseEntity(jsonMap, HttpStatus.BAD_REQUEST)
         }
     }
 

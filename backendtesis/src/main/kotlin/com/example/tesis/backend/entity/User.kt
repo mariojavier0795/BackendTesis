@@ -11,49 +11,49 @@ data class User (
         @Id
         @Column(name = "CUSUARIO")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var cuser: Int? = null,
+        val cuser: Int? = null,
 
         @Column(name = "USUARIO")
-        var username : String? = "",
+        val username : String? = "",
 
         @Column(name = "CORREO")
-        var mail : String? = "",
+        val mail : String? = "",
 
         @Column(name = "PASSWORD")
-        var password : String? = "",
+        val password : String? = "",
 
         @Column(name = "NOMBRES")
-        var names : String? = "",
+        val names : String? = "",
 
         @Column(name = "APELLIDOS")
-        var lastnames : String? = "",
+        val lastnames : String? = "",
 
         @Column(name = "EDAD")
-        var age : Int? = null,
+        val age : Int? = null,
 
         @Column(name = "FNACIMIENTO")
-        var birthDay : Date? = null,
+        val birthDay : Date? = null,
 
         @Column(name = "SEXO")
-        var gender : String? = "",
+        val gender : String? = "",
 
         @Column(name = "TELEFONO")
-        var phone : String? = "",
+        val phone : String? = "",
 
         @Lob()
         @Column(name = "IMAGEN_USUARIO")
-        var userImage : ByteArray? = null,
+        val userImage : ByteArray? = null,
 
         @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         @JsonIgnore
-        var lstUserRole : List<UserRoles> = emptyList(),
+        val lstUserRole : List<UserRoles> = emptyList(),
 
         @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-        var lstCommentary : List<Commentary> = emptyList(),
+        val lstCommentary : List<Commentary> = emptyList(),
 
         @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-        var lstService : List<Service> = emptyList(),
+        val lstService : List<Service> = emptyList(),
 
         @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-        var lstReservation : List<Reservation> = emptyList()
+        val lstReservation : List<Reservation> = emptyList()
 )

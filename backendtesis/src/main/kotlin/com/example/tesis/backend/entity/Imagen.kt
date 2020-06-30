@@ -9,17 +9,17 @@ data class Imagen (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "CIMAGEN")
-        var cimagen : Int? = null,
+        val cimagen : Int? = null,
 
         @Lob
         @Column(name = "IMAGEN")
-        var image : ByteArray? = null,
+        val image : ByteArray? = null,
 
         @Column(name = "DESCRIPCION_IMAGEN")
-        var descriptionImagen : String? = "",
+        val descriptionImagen : String? = "",
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CSERVICIO", referencedColumnName = "CSERVICIO")
-        var service : Service? = null
+        val service : Service? = null
 
 )

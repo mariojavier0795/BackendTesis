@@ -10,17 +10,17 @@ data class ServiceBranch (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "CSERVICIOSUCURSAL")
-        var cserviceBranch : Int? = null,
+        val cserviceBranch : Int? = null,
 
         @OneToMany(mappedBy = "serviceBranch", fetch = FetchType.LAZY)
         @JsonIgnore()
-        var lstReservation : List<Reservation> = emptyList(),
+        val lstReservation : List<Reservation> = emptyList(),
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CSERVICIO", referencedColumnName = "CSERVICIO")
-        var service : Service? = null,
+        val service : Service? = null,
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CSUCURSAL", referencedColumnName = "CSUCURSAL")
-        var branchOffice : BranchOffice? = null
+        val branchOffice : BranchOffice? = null
 )

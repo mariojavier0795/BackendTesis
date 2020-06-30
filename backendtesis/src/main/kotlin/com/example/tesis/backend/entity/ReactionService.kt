@@ -9,13 +9,13 @@ data class ReactionService (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "CREACCIONSERVICIO")
-        var creactionService : Int? = null,
+        val creactionService : Int? = null,
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CSERVICIO", referencedColumnName = "CSERVICIO")
-        var service : Service? = null,
+        val service : Service? = null,
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CREACCION", referencedColumnName = "CREACCION")
-        var reaction : Reaction? = null
+        val reaction : Reaction? = null
 )

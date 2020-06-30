@@ -9,15 +9,15 @@ data class Reaction (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "CREACCION")
-        var creaction : Int? = null,
+        val creaction : Int? = null,
 
         @Column(name = "NOMBRE_REACCION")
-        var reactionName : String? = "",
+        val reactionName : String? = "",
 
         @Lob
         @Column(name = "IMAGEN_REACCION")
-        var reactionImagen : ByteArray? = null,
+        val reactionImagen : ByteArray? = null,
 
         @OneToMany(mappedBy = "reaction", fetch = FetchType.LAZY)
-        var lstReactionService : List<ReactionService> = emptyList()
+        val lstReactionService : List<ReactionService> = emptyList()
 )

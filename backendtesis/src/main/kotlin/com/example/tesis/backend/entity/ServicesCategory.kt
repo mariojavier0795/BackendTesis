@@ -10,12 +10,12 @@ data class ServicesCategory (
         @Id
         @Column(name = "CCATEGORIASERVICIOS")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var cservicesCategory: Int? = null,
+        val cservicesCategory: Int? = null,
 
         @Column(name = "NOMBRE_CATEGORIA")
-        var categoryName : String? = "",
+        val categoryName : String? = "",
 
         @OneToMany(mappedBy = "servicesCategory", fetch = FetchType.LAZY)
         @JsonIgnore
-        var lstService: List<Service> = emptyList()
+        val lstService: List<Service> = emptyList()
 )

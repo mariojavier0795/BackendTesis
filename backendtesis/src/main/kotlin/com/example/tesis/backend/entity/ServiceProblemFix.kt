@@ -9,15 +9,15 @@ data class ServiceProblemFix (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "CPROBLEMASERVICIOARREGLAR")
-        var cserviceProblemFix : Int? = null,
+        val cserviceProblemFix : Int? = null,
 
         @Column(name = "DESCRIPCION_PROBLEMA")
-        var descriptionProblem : String? = "",
+        val descriptionProblem : String? = "",
 
         @OneToMany(mappedBy = "serviceProblemFix", fetch = FetchType.LAZY)
-        var lstProblemSolving : List<ProblemSolving> = emptyList(),
+        val lstProblemSolving : List<ProblemSolving> = emptyList(),
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CSERVICIO", referencedColumnName = "CSERVICIO")
-        var service : Service? = null
+        val service : Service? = null
 )

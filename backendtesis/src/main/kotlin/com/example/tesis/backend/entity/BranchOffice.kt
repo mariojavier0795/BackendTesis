@@ -9,17 +9,17 @@ data class BranchOffice (
         @Id
         @Column(name = "CSUCURSAL")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var cbranchOffice : Int? = null,
+        val cbranchOffice : Int? = null,
 
         @Column(name = "LATITUD_SUCURSAL")
-        var latitudeBranchOffice : Float? = null,
+        val latitudeBranchOffice : Float? = null,
 
         @Column(name = "LONGITUD_SUCURSAL")
-        var longitudeBranchOffice : Float? = null,
+        val longitudeBranchOffice : Float? = null,
 
         @Column(name = "NOMBRE_SUCURSAL")
         var nameBranchOffice : String? = "",
 
         @OneToMany(mappedBy = "branchOffice", fetch = FetchType.LAZY)
-        var lstServiceBranch : List<ServiceBranch> = emptyList()
+        val lstServiceBranch : List<ServiceBranch> = emptyList()
 )
