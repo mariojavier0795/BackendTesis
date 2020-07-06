@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/role")
 @RestController
 class RoleController(private val roleRepository: RoleRepository) {
-    @GetMapping("/searchRole")
+
+    @GetMapping("/getRole")
     fun getSearchUser() : List<Role> {
         return roleRepository.findAll();
     }

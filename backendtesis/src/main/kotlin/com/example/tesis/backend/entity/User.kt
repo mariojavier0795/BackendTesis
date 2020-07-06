@@ -49,11 +49,14 @@ data class User (
         val lstUserRole : List<UserRoles> = emptyList(),
 
         @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+        @JsonIgnore
         val lstCommentary : List<Commentary> = emptyList(),
 
         @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+        @JsonIgnore
         val lstService : List<Service> = emptyList(),
 
         @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+        @JsonIgnore
         val lstReservation : List<Reservation> = emptyList()
 )

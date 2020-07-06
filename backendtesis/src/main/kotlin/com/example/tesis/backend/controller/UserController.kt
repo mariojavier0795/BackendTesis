@@ -1,8 +1,13 @@
 package com.example.tesis.backend.controller
 
 
+import com.example.tesis.backend.entity.Role
 import com.example.tesis.backend.entity.User
+import com.example.tesis.backend.entity.UserRoles
 import com.example.tesis.backend.repository.UserRepository
+import com.example.tesis.backend.repository.UserRolesRepository
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.node.ObjectNode
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
@@ -31,6 +36,11 @@ class UserController(private val userRepository : UserRepository) {
             jsonMap["Error message"] = e.message.toString()
             ResponseEntity(jsonMap, HttpStatus.BAD_REQUEST)
         }
+    }
+
+    @PostMapping("/saveUser")
+    fun saveUser(@RequestBody() user: User): User {
+        return userRepository.save(user)
     }
 
 }
