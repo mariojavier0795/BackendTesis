@@ -8,8 +8,13 @@ import org.springframework.stereotype.Service
 @Service()
 class UserService(private val userRepository : UserRepository) {
 
-    fun saveUser(user: User): ResponseEntity<User> =
-            ResponseEntity.ok(userRepository.save(user))
+    fun saveUser(user: User?): User {
+        var userSaved = User()
+        if(user != null) {
+            userSaved = userRepository.save(user)
+        }
+        return userSaved
+    }
 
     fun logInUser(username: String?, password: String?): ResponseEntity<List<User>> =
             ResponseEntity.ok(userRepository.findUser(username, password))
