@@ -19,6 +19,7 @@ data class JsonStructure (
         val servicesCategory: ServicesCategory?,
         val serviceTag: ServiceTag?,
         val tag: Tag?,
-        val userRoles: UserRoles?
+        val userRoles: UserRoles?,
+        val secretKey: String?
 
 )

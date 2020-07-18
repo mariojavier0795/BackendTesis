@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-@CrossOrigin("*")
 @RequestMapping("/serviceProblemFix")
 @RestController
 class ServiceProblemFixController(private val serviceProblemFixRepository: ServiceProblemFixRepository) {

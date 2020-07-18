@@ -3,14 +3,18 @@ package com.example.tesis.backend.controller
 
 import com.example.tesis.backend.entity.User
 import com.example.tesis.backend.entity.UserRoles
+import com.example.tesis.backend.security.SecurityConstants
 import com.example.tesis.backend.service.UserRolesService
 import com.example.tesis.backend.service.UserService
 import com.example.tesis.backend.structure.JsonStructure
+import com.example.tesis.backend.util.JWTUtil
+import io.jsonwebtoken.Jwts
+import io.jsonwebtoken.SignatureAlgorithm
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.nio.charset.StandardCharsets
+import java.util.*
 
-
-@CrossOrigin("*")
 @RequestMapping("/user")
 @RestController
 class UserController(private val userService: UserService, private val userRolesService: UserRolesService) {
@@ -22,14 +26,15 @@ class UserController(private val userService: UserService, private val userRoles
         val userRolesSaved = userRolesService.saveUserRole(userRoles)
         return ResponseEntity.ok(JsonStructure(userSaved, null, null, null, null, null,
             null, null, null, null, null, null, null,
-            null, null, userRolesSaved))
+            null, null, userRolesSaved, null))
     }
 
-    @GetMapping("/logInUser")
-    fun logInUser(@RequestParam parameters: Map<String, String>): ResponseEntity<List<User>> {
-        val username = parameters["username"]
-        val password = parameters["password"]
-        return userService.logInUser(username, password)
+    @PostMapping("/login")
+    fun logInUser(@RequestBody user: User?): ResponseEntity<JsonStructure> {
+        val user = userService.login(user)
+        return ResponseEntity.ok(JsonStructure(user, null, null, null, null, null,
+                null, null, null, null, null, null, null,
+                null, null, null,JWTUtil().addAuthentication(user.username)))
     }
 
 

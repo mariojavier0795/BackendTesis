@@ -8,7 +8,6 @@ import com.example.tesis.backend.service.UserRolesService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@CrossOrigin("*")
 @RequestMapping("/userRoles")
 @RestController
 class UserRolesController(private val userRolesService: UserRolesService) {
