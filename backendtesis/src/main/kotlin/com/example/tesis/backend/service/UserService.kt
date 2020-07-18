@@ -2,9 +2,6 @@ package com.example.tesis.backend.service
 
 import com.example.tesis.backend.entity.User
 import com.example.tesis.backend.repository.UserRepository
-import org.springframework.security.core.userdetails.UserDetails
-import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
 
 @Service()
@@ -18,9 +15,8 @@ class UserService(private val userRepository : UserRepository) {
         return userSaved
     }
 
-    fun login(user: User?): User {
-        val user = userRepository.findByUsername(user?.username)
-        return user!!
+    fun login(user: User?): User? {
+        return userRepository.findByUsernameAndPassword(user?.username, user?.password)
     }
 
 }

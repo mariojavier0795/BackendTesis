@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*
 import java.nio.charset.StandardCharsets
 import java.util.*
 
+@CrossOrigin("*")
 @RequestMapping("/user")
 @RestController
 class UserController(private val userService: UserService, private val userRolesService: UserRolesService) {
@@ -30,11 +31,12 @@ class UserController(private val userService: UserService, private val userRoles
     }
 
     @PostMapping("/login")
-    fun logInUser(@RequestBody user: User?): ResponseEntity<JsonStructure> {
-        val user = userService.login(user)
-        return ResponseEntity.ok(JsonStructure(user, null, null, null, null, null,
+    fun logInUser(@RequestBody jsonstructure: JsonStructure?): ResponseEntity<JsonStructure> {
+        val userResponse = userService.login(jsonstructure?.user)
+        val tokenResponse = if (userResponse != null) JWTUtil().addAuthentication(userResponse?.username) else null
+        return ResponseEntity.ok(JsonStructure(userResponse, null, null, null, null, null,
                 null, null, null, null, null, null, null,
-                null, null, null,JWTUtil().addAuthentication(user.username)))
+                null, null, null, tokenResponse))
     }
 
 
