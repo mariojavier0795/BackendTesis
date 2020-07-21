@@ -1,19 +1,13 @@
 package com.example.tesis.backend.controller
 
 
-import com.example.tesis.backend.entity.User
 import com.example.tesis.backend.entity.UserRoles
-import com.example.tesis.backend.security.SecurityConstants
 import com.example.tesis.backend.service.UserRolesService
 import com.example.tesis.backend.service.UserService
 import com.example.tesis.backend.structure.JsonStructure
 import com.example.tesis.backend.util.JWTUtil
-import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.SignatureAlgorithm
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.nio.charset.StandardCharsets
-import java.util.*
 
 @CrossOrigin("*")
 @RequestMapping("/user")

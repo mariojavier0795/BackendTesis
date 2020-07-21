@@ -20,7 +20,7 @@ data class User (
         val mail : String? = "",
 
         @Column(name = "PASSWORD")
-        val password : String? = "",
+        var password : String? = "",
 
         @Column(name = "NOMBRES")
         val names : String? = "",

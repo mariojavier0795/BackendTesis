@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserRepository : JpaRepository<User, Long> {
 
-    @Query("FROM User where username = :pusername and password = :ppassword")
-    fun findByUsernameAndPassword(@Param("pusername") username: String?, @Param("ppassword") password: String?): User?
+    @Query("FROM User where username = :pusername")
+    fun findByUsername(@Param("pusername") username: String?): User?
 }
