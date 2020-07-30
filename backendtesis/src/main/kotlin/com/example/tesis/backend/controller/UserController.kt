@@ -1,6 +1,7 @@
 package com.example.tesis.backend.controller
 
 
+import com.example.tesis.backend.entity.User
 import com.example.tesis.backend.entity.UserRoles
 import com.example.tesis.backend.service.UserRolesService
 import com.example.tesis.backend.service.UserService
@@ -33,5 +34,11 @@ class UserController(private val userService: UserService, private val userRoles
                 null, null, null, tokenResponse))
     }
 
-
+    @PostMapping("/loadInformation")
+    fun loadInformation(@RequestBody user: User?): ResponseEntity<JsonStructure> {
+        val userResponse = userService.loadInformationUserByCuser(user?.cuser)
+        return ResponseEntity.ok(JsonStructure(userResponse, null, null, null, null, null,
+                null, null, null, null, null, null, null,
+                null, null, null, null))
+    }
 }

@@ -33,6 +33,7 @@ class SecurityConfig: WebSecurityConfigurerAdapter() {
                 .addFilterAfter(JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter::class.java)
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/user/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/user/loadInformation").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/saveUser").permitAll()
                 .antMatchers(HttpMethod.GET, "/role/getRole").permitAll()
                 .anyRequest().authenticated()

@@ -3,14 +3,23 @@ package com.example.tesis.backend.controller
 import com.example.tesis.backend.entity.Service
 import com.example.tesis.backend.entity.User
 import com.example.tesis.backend.service.ServiceService
+import com.example.tesis.backend.structure.JsonStructure
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @CrossOrigin("*")
 @RequestMapping("/service")
 @RestController
 class ServiceController(private val serviceService: ServiceService) {
-    @PostMapping("/getService")
-    fun getService(@RequestBody user: User): List<Service>? {
-        return serviceService.findServicebyUsername(user)
+
+    @PostMapping("/getServiceByUser")
+    fun getService(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<List<Service>?> {
+        return ResponseEntity.ok(serviceService.findServicebyUsername(jsonRequest?.user)!!)
+    }
+
+    @PostMapping("/deleteServicebyId")
+    fun deleteServicebyId(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<Boolean> {
+        serviceService.deleteServicebyId(jsonRequest?.service)
+        return ResponseEntity.ok(true)
     }
 }

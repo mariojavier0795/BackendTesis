@@ -27,4 +27,9 @@ class UserService(private val userRepository : UserRepository) {
         }
     }
 
+    fun loadInformationUserByCuser(cuser: Int?): User? {
+        val userResponse = userRepository.findyByCUser(cuser)
+        return if(userResponse != null) userResponse else null
+    }
+
 }

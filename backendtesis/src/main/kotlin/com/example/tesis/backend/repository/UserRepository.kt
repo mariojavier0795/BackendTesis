@@ -12,4 +12,7 @@ interface UserRepository : JpaRepository<User, Long> {
 
     @Query("FROM User where username = :pusername")
     fun findByUsername(@Param("pusername") username: String?): User?
+
+    @Query("FROM User where cuser = :pcuser")
+    fun findyByCUser(@Param("pcuser") cuser: Int?): User?
 }
