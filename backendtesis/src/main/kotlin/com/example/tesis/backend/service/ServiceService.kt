@@ -16,4 +16,17 @@ class ServiceService(private val serviceRepository: ServiceRepository) {
             serviceRepository.delete(service)
         }
     }
+
+    fun findServicebyId(service: Service?): Service? {
+        return serviceRepository.findServicebyId(service?.cservice)
+    }
+
+    fun updateService(service: Service?): Boolean {
+        var flagUpdate = false
+        if(service != null) {
+            serviceRepository.save(service)
+            flagUpdate = true
+        }
+        return flagUpdate
+    }
 }

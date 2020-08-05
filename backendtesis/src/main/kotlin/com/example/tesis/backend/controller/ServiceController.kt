@@ -22,4 +22,15 @@ class ServiceController(private val serviceService: ServiceService) {
         serviceService.deleteServicebyId(jsonRequest?.service)
         return ResponseEntity.ok(true)
     }
+
+    @PostMapping("/getServiceById")
+    fun getServiceById(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<Service?> {
+        return ResponseEntity.ok(serviceService.findServicebyId(jsonRequest?.service)!!)
+    }
+
+    @PostMapping("/updateService")
+    fun updateService(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<Boolean> {
+        val flagUpdate = serviceService.updateService(jsonRequest?.service)
+        return ResponseEntity.ok(flagUpdate)
+    }
 }

@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface ServiceRepository : JpaRepository<Service, Long> {
+
     @Query("from Service where user=:puser")
     fun findServicebyUsername(@Param("puser") user: User?): List<Service>?
+
+    @Query("from Service where cservice=:pcservice")
+    fun findServicebyId(@Param("pcservice") cservice: Int?): Service?
 }
