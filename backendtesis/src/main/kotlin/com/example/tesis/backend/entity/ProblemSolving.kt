@@ -15,7 +15,6 @@ data class ProblemSolving (
         @Column(name = "DESCRIPCION_SOLUCION")
         val descriptionProblem : String? = "",
 
-        @JsonBackReference
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CPROBLEMASERVICIOARREGLAR", referencedColumnName = "CPROBLEMASERVICIOARREGLAR")
         val serviceProblemFix : ServiceProblemFix? = null

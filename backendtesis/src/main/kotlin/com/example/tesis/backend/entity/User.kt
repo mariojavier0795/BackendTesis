@@ -1,5 +1,6 @@
 package com.example.tesis.backend.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import com.fasterxml.jackson.annotation.JsonIgnore
 import java.util.*
 import javax.persistence.*
@@ -44,19 +45,19 @@ data class User (
         @Column(name = "IMAGEN_USUARIO")
         val userImage : ByteArray? = null,
 
-        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         @JsonIgnore
+        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         val lstUserRole : List<UserRoles> = emptyList(),
 
-        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         @JsonIgnore
+        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         val lstCommentary : List<Commentary> = emptyList(),
 
-        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         @JsonIgnore
+        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         val lstService : List<Service> = emptyList(),
 
-        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         @JsonIgnore
+        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         val lstReservation : List<Reservation> = emptyList()
 )

@@ -1,5 +1,6 @@
 package com.example.tesis.backend.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
@@ -12,8 +13,8 @@ data class ServiceBranch (
         @Column(name = "CSERVICIOSUCURSAL")
         val cserviceBranch : Int? = null,
 
+        @JsonIgnore
         @OneToMany(mappedBy = "serviceBranch", fetch = FetchType.LAZY)
-        @JsonIgnore()
         val lstReservation : List<Reservation> = emptyList(),
 
         @ManyToOne(fetch = FetchType.LAZY)

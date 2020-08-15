@@ -1,5 +1,6 @@
 package com.example.tesis.backend.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
@@ -15,7 +16,7 @@ data class Role (
         @Column(name = "DESCRIPCION_ROL")
         val roleDescription : String? = "",
 
-        @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
         @JsonIgnore
+        @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
         val lstUserRole: List<UserRoles> = emptyList()
 )

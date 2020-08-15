@@ -1,5 +1,7 @@
 package com.example.tesis.backend.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity
@@ -20,6 +22,7 @@ data class BranchOffice (
         @Column(name = "NOMBRE_SUCURSAL")
         var nameBranchOffice : String? = "",
 
+        @JsonIgnore
         @OneToMany(mappedBy = "branchOffice", fetch = FetchType.LAZY)
         val lstServiceBranch : List<ServiceBranch> = emptyList()
 )

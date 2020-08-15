@@ -1,5 +1,8 @@
 package com.example.tesis.backend.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import java.util.*
 import javax.persistence.*
 
@@ -36,24 +39,31 @@ data class Service (
         @Column(name = "DOMICILIO")
         val homeservice : Boolean? = null,
 
+        @JsonIgnore
         @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
         val lstServiceTag : List<ServiceTag> = emptyList(),
 
+        @JsonIgnore
         @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
         val lstServiceBranch : List<ServiceBranch> = emptyList(),
 
+        @JsonIgnore
         @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
         val lstCommentary : List<Commentary> = emptyList(),
 
+        @JsonIgnore
         @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
         val lstServiceProblemFix : List<ServiceProblemFix> = emptyList(),
 
+        @JsonIgnore
         @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
         val lstImagen : List<Imagen> = emptyList(),
 
+        @JsonIgnore
         @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
         val lstReactionService : List<ReactionService> = emptyList(),
 
+        @JsonIgnore
         @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
         val lstReservation : List<Reservation> = emptyList(),
 

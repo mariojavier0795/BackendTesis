@@ -1,5 +1,7 @@
 package com.example.tesis.backend.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity
@@ -18,6 +20,7 @@ data class Reaction (
         @Column(name = "IMAGEN_REACCION")
         val reactionImagen : ByteArray? = null,
 
+        @JsonIgnore
         @OneToMany(mappedBy = "reaction", fetch = FetchType.LAZY)
         val lstReactionService : List<ReactionService> = emptyList()
 )

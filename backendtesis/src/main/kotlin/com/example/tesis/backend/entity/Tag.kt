@@ -1,6 +1,8 @@
 package com.example.tesis.backend.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
 
 @Entity
@@ -15,7 +17,7 @@ data class Tag (
         @Column(name = "NOMBRE_ETIQUETA")
         val tagName : String? = "",
 
-        @JsonIgnore()
+        @JsonIgnore
         @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY)
         val lstServiceTag : List<ServiceTag> = emptyList()
 )
