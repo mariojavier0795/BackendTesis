@@ -1,5 +1,6 @@
 package com.example.tesis.backend.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
 
 @Entity
@@ -14,6 +15,7 @@ data class ProblemSolving (
         @Column(name = "DESCRIPCION_SOLUCION")
         val descriptionProblem : String? = "",
 
+        @JsonBackReference
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CPROBLEMASERVICIOARREGLAR", referencedColumnName = "CPROBLEMASERVICIOARREGLAR")
         val serviceProblemFix : ServiceProblemFix? = null

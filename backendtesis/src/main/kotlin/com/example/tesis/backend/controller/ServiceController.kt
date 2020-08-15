@@ -4,6 +4,7 @@ import com.example.tesis.backend.entity.Service
 import com.example.tesis.backend.entity.User
 import com.example.tesis.backend.service.ServiceService
 import com.example.tesis.backend.structure.JsonStructure
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -24,8 +25,11 @@ class ServiceController(private val serviceService: ServiceService) {
     }
 
     @PostMapping("/getServiceById")
-    fun getServiceById(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<Service?> {
-        return ResponseEntity.ok(serviceService.findServicebyId(jsonRequest?.service)!!)
+    fun getServiceById(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<JsonStructure?> {
+        val result = serviceService.findServicebyId(jsonRequest?.service)
+        return ResponseEntity.ok(JsonStructure(null, null, null, null, null, null,
+                null, null, null, result, null, null, null,
+                null, null, null, null))
     }
 
     @PostMapping("/updateService")

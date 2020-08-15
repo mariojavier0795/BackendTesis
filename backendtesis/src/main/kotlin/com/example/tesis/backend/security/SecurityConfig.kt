@@ -36,6 +36,7 @@ class SecurityConfig: WebSecurityConfigurerAdapter() {
                 .antMatchers(HttpMethod.POST, "/user/loadInformation").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/saveUser").permitAll()
                 .antMatchers(HttpMethod.GET, "/role/getRole").permitAll()
+                .antMatchers(HttpMethod.POST, "/ocr/prueba").permitAll()
                 .anyRequest().authenticated()
     }
 }
