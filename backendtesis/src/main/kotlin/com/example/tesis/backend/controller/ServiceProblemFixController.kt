@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.*
 class ServiceProblemFixController(private val serviceProblemFixService: ServiceProblemFixService) {
 
     @PostMapping("deleteServiceProblemFix")
-    fun deleteServiceProblemFix(jsonRequest: JsonStructure?): ResponseEntity<Boolean> {
+    fun deleteServiceProblemFix(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<Boolean> {
         val result = serviceProblemFixService.deleteServiceProblemFixService(jsonRequest?.serviceProblemFix)
         return ResponseEntity.ok(result)
     }
 
     @PostMapping("insertServiceProblemFix")
-    fun insertServiceProblemFix(jsonStructure: JsonStructure?): ResponseEntity<Boolean> {
+    fun insertServiceProblemFix(@RequestBody jsonStructure: JsonStructure?): ResponseEntity<Boolean> {
         val result = serviceProblemFixService.insertServiceProblemFixService(jsonStructure?.serviceProblemFix)
         return ResponseEntity.ok(result)
     }
