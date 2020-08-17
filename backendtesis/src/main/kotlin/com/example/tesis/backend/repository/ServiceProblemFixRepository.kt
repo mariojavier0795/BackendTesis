@@ -15,4 +15,5 @@ interface ServiceProblemFixRepository : JpaRepository<ServiceProblemFix, Long> {
 
     @Query("SELECT spf FROM ServiceProblemFix spf JOIN spf.service s WHERE s.user = :puser")
     fun findServiceProblemFixByUsername(@Param("puser") user: User?): List<ServiceProblemFix?>?
+
 }
