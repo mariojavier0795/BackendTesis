@@ -2,8 +2,11 @@ package com.example.tesis.backend.controller
 
 import com.example.tesis.backend.entity.Service
 import com.example.tesis.backend.entity.User
+import com.example.tesis.backend.service.CommentaryService
+import com.example.tesis.backend.service.ReactionServiceService
 import com.example.tesis.backend.service.ServiceService
 import com.example.tesis.backend.structure.JsonStructure
+import org.json.simple.JSONObject
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -11,30 +14,50 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin("*")
 @RequestMapping("/service")
 @RestController
-class ServiceController(private val serviceService: ServiceService) {
+class ServiceController(private val serviceService: ServiceService,
+                        private val commentaryService: CommentaryService,
+                        private val reactionServiceService: ReactionServiceService) {
 
-    @PostMapping("/getServiceByUser")
-    fun getService(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<List<Service>?> {
-        return ResponseEntity.ok(serviceService.findServicebyUsername(jsonRequest?.user)!!)
+    @PostMapping("getServiceByUser")
+    fun getService(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<JSONObject> {
+        val jsonResponse = JSONObject()
+        jsonResponse["ListServices"] = serviceService.findServicebyUsername(jsonRequest?.user)
+        return ResponseEntity.ok(jsonResponse)
     }
 
-    @PostMapping("/deleteServicebyId")
-    fun deleteServicebyId(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<Boolean> {
-        serviceService.deleteServicebyId(jsonRequest?.service)
-        return ResponseEntity.ok(true)
+    @PostMapping("deleteServicebyId")
+    fun deleteServicebyId(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<JSONObject> {
+        val jsonResponse = JSONObject()
+        val result = serviceService.deleteServicebyId(jsonRequest?.service)
+        jsonResponse["Result"] = result
+        return ResponseEntity.ok(jsonResponse)
     }
 
-    @PostMapping("/getServiceById")
-    fun getServiceById(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<JsonStructure?> {
+    @PostMapping("getServiceById")
+    fun getServiceById(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<JSONObject> {
+        val jsonResponse = JSONObject()
         val result = serviceService.findServicebyId(jsonRequest?.service)
-        return ResponseEntity.ok(JsonStructure(null, null, null, null, null, null,
-                null, null, null, result, null, null, null,
-                null, null, null, null))
+        jsonResponse["Service"] = result
+        return ResponseEntity.ok(jsonResponse)
     }
 
-    @PostMapping("/updateService")
-    fun updateService(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<Boolean> {
+    @PostMapping("saveOrUpdateService")
+    fun saveOrUpdateService(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<JSONObject> {
+        val jsonResponse = JSONObject()
         val flagUpdate = serviceService.updateService(jsonRequest?.service)
-        return ResponseEntity.ok(flagUpdate)
+        jsonResponse["Result"] = flagUpdate
+        return ResponseEntity.ok(jsonResponse)
+    }
+
+    @PostMapping("getServiceDetailById")
+    fun getServiceDetailById(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<JSONObject> {
+        val jsonResponse = JSONObject()
+        val serviceResponse = serviceService.findServicebyId(jsonRequest?.service)
+        val listCommentaryResponse = commentaryService.findCommentaryByService(jsonRequest?.service)
+        val listReactionServiceResponse = reactionServiceService.findReactionServiceByService(jsonRequest?.service)
+        jsonResponse["Service"] = serviceResponse
+        jsonResponse["ListCommentaryResponse"] = listCommentaryResponse
+        jsonResponse["ListReactionServiceResponse"] = listReactionServiceResponse
+        return ResponseEntity.ok(jsonResponse)
     }
 }

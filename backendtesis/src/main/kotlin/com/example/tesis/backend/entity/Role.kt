@@ -14,7 +14,7 @@ data class Role (
         val crole: Int? = null,
 
         @Column(name = "DESCRIPCION_ROL")
-        val roleDescription : String? = "",
+        val roleDescription : String? = null,
 
         @JsonIgnore
         @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)

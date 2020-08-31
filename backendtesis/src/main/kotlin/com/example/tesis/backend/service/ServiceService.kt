@@ -12,10 +12,13 @@ class ServiceService(private val serviceRepository: ServiceRepository) {
         return if (user != null) serviceResponse else null
     }
 
-    fun deleteServicebyId(service: Service?) {
+    fun deleteServicebyId(service: Service?): Boolean {
+        var result = false
         if (service != null) {
             serviceRepository.delete(service)
+            result = true
         }
+        return result
     }
 
     fun findServicebyId(service: Service?): Service? {

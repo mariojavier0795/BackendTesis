@@ -15,19 +15,19 @@ data class User (
         val cuser: Int? = null,
 
         @Column(name = "USUARIO")
-        val username : String? = "",
+        val username : String? = null,
 
         @Column(name = "CORREO")
-        val mail : String? = "",
+        val mail : String? = null,
 
         @Column(name = "PASSWORD")
-        var password : String? = "",
+        var password : String? = null,
 
         @Column(name = "NOMBRES")
-        val names : String? = "",
+        val names : String? = null,
 
         @Column(name = "APELLIDOS")
-        val lastnames : String? = "",
+        val lastnames : String? = null,
 
         @Column(name = "EDAD")
         val age : Int? = null,
@@ -36,10 +36,10 @@ data class User (
         val birthDay : Date? = null,
 
         @Column(name = "SEXO")
-        val gender : String? = "",
+        val gender : String? = null,
 
         @Column(name = "TELEFONO")
-        val phone : String? = "",
+        val phone : String? = null,
 
         @Lob()
         @Column(name = "IMAGEN_USUARIO")

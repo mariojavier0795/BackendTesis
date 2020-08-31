@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service
 @Service()
 class UserService(private val userRepository : UserRepository) {
 
-    fun saveUser(user: User?): User {
-        var userSaved = User()
+    fun saveUser(user: User?): User? {
         user?.password = BCrypt.hashpw(user?.password, BCrypt.gensalt(12))
-        if(user != null) {
-            userSaved = userRepository.save(user)
+        return if(user != null) {
+            userRepository.save(user)
+        }else {
+            null
         }
-        return userSaved
     }
 
     fun login(user: User?): User? {
@@ -27,9 +27,8 @@ class UserService(private val userRepository : UserRepository) {
         }
     }
 
-    fun loadInformationUserByCuser(cuser: Int?): User? {
-        val userResponse = userRepository.findyByCUser(cuser)
-        return if(userResponse != null) userResponse else null
+    fun loadInformationUserByCuser(user: User?): User? {
+        return userRepository.findyByCUser(user?.cuser)
     }
 
 }

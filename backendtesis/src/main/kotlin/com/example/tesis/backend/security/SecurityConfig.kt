@@ -36,7 +36,15 @@ class SecurityConfig: WebSecurityConfigurerAdapter() {
                 .antMatchers(HttpMethod.POST, "/user/loadInformation").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/saveUser").permitAll()
                 .antMatchers(HttpMethod.GET, "/role/getRole").permitAll()
-                .antMatchers(HttpMethod.POST, "/ocr/prueba").permitAll()
+                .antMatchers(HttpMethod.POST, "/ocr/test2").permitAll()
+                .antMatchers(HttpMethod.GET, "/ocr/getTypeDocuments").permitAll()
+                .antMatchers(HttpMethod.POST, "/ocr/getTypeDocumentsDetail").permitAll()
+                .antMatchers(HttpMethod.POST, "/ocr/saveTypeDocumentsDetail").permitAll()
+                .antMatchers(HttpMethod.POST, "/ocr/saveImage").permitAll()
+                .antMatchers(HttpMethod.GET, "/ocr/getDocuments").permitAll()
+                .antMatchers(HttpMethod.POST, "/ocr/getDocumentsID").permitAll()
+                .antMatchers(HttpMethod.POST, "/ocr/reconocerOCR").permitAll()
+                .antMatchers(HttpMethod.POST, "/ocr/drawOCR").permitAll()
                 .anyRequest().authenticated()
     }
 }
