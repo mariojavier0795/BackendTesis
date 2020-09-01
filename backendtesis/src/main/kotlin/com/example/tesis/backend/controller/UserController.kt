@@ -59,6 +59,7 @@ class UserController(private val userService: UserService, private val userRoles
     fun loadInformation(@RequestBody jsonRequest: JsonStructure): ResponseEntity<JSONObject> {
         val jsonResponse = JSONObject()
         val userResponse = userService.loadInformationUserByCuser(jsonRequest.user)
+        jsonResponse.put("FileType", userResponse?.filetype)
         jsonResponse.put("ImageUser", userResponse?.userImage)
         jsonResponse.put("Username", userResponse?.names + " "+ userResponse?.lastnames)
         return ResponseEntity.ok(jsonResponse)

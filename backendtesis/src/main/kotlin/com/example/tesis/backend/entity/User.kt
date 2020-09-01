@@ -45,6 +45,9 @@ data class User (
         @Column(name = "IMAGEN_USUARIO")
         val userImage : ByteArray? = null,
 
+        @Column(name = "TIPOARCHIVO")
+        val filetype: String? = null,
+
         @JsonIgnore
         @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
         val lstUserRole : List<UserRoles> = emptyList(),

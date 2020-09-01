@@ -18,6 +18,9 @@ data class Imagen (
         @Column(name = "DESCRIPCION_IMAGEN")
         val descriptionImagen : String? = "",
 
+        @Column(name = "TIPOARCHIVO")
+        val filetype: String? = null,
+
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CSERVICIO", referencedColumnName = "CSERVICIO")
         val service : Service? = null
