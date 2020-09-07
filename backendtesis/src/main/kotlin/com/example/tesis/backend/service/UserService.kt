@@ -20,7 +20,7 @@ class UserService(private val userRepository : UserRepository) {
     fun login(user: User?): User? {
         val userResponse = userRepository.findByUsername(user?.username)
         return if (userResponse != null) {
-            val matched = BCrypt.checkpw(user?.password, userResponse?.password)
+            val matched = BCrypt.checkpw(user?.password, userResponse.password)
             if (matched) userResponse else null
         }else {
             null

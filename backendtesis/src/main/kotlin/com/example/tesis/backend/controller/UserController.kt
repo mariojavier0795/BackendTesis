@@ -41,7 +41,7 @@ class UserController(private val userService: UserService, private val userRoles
         if(userResponse != null) {
             val userRolesResponse = userRolesService.validateRoleAndUser(jsonRequest.role, userResponse)
             if(userRolesResponse != null) {
-                val tokenResponse = JWTUtil().addAuthentication(userResponse?.username)
+                val tokenResponse = JWTUtil().addAuthentication(userResponse.username)
                 status = true
                 jsonResponse.put("Cuser", userResponse.cuser)
                 jsonResponse.put("Token", tokenResponse)

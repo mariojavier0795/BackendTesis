@@ -13,6 +13,6 @@ class JWTAuthenticationFilter: OncePerRequestFilter() {
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain) {
         val authentication = JWTUtil().getAuthentication(request)
         SecurityContextHolder.getContext().authentication = authentication
-        filterChain?.doFilter(request, response)
+        filterChain.doFilter(request, response)
     }
 }
