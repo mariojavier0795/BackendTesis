@@ -23,6 +23,6 @@ data class Imagen (
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "CSERVICIO", referencedColumnName = "CSERVICIO")
-        val service : Service? = null
+        var service : Service? = null
 
 )

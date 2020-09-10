@@ -10,4 +10,8 @@ class ImageService(private val imagenRepository: ImagenRepository) {
     fun findImagebyService(service: com.example.tesis.backend.entity.Service?): List<Imagen?>? {
         return imagenRepository.findImagebyService(service)
     }
+
+    fun saveOrUpdateImage(imagen: Imagen?): Imagen? {
+        return imagenRepository.save(imagen!!)
+    }
 }

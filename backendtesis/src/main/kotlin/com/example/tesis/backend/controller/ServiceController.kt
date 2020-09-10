@@ -35,8 +35,8 @@ class ServiceController(private val serviceService: ServiceService,
                 structureJsonResponse["unitPrice"] = it.unitPrice
                 structureJsonResponse["description"] = it.description
                 structureJsonResponse["serviceAlias"] = it.serviceAlias
-                structureJsonResponse["filetype"] = listImages?.get(0)?.filetype
-                structureJsonResponse["image"] = listImages?.get(0)?.image
+                structureJsonResponse["filetype"] = if(!listImages.isNullOrEmpty()) listImages?.get(0)?.filetype else ""
+                structureJsonResponse["image"] = if(!listImages.isNullOrEmpty()) listImages?.get(0)?.image else "assets/images/SinImagen.png"
                 arrayStructureJsonResponse.add(structureJsonResponse)
             }
         }else{
@@ -66,8 +66,15 @@ class ServiceController(private val serviceService: ServiceService,
 
     @PostMapping("saveOrUpdateService")
     fun saveOrUpdateService(@RequestBody jsonRequest: JsonStructure?): ResponseEntity<JSONObject> {
+        var flagUpdate = false
         val jsonResponse = JSONObject()
-        val flagUpdate = serviceService.updateService(jsonRequest?.service)
+        if(jsonRequest?.service?.cservice != null) {
+            val serviceResponseUpdate = serviceService.saveOrUpdateService(jsonRequest?.service)
+            if(serviceResponseUpdate != null) flagUpdate = true
+        }else{
+            val serviceResponseCreate = serviceService.saveOrUpdateService(jsonRequest?.service)
+            if(serviceResponseCreate != null) flagUpdate = true
+        }
         jsonResponse["Result"] = flagUpdate
         return ResponseEntity.ok(jsonResponse)
     }

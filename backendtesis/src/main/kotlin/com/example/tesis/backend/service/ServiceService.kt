@@ -25,12 +25,12 @@ class ServiceService(private val serviceRepository: ServiceRepository) {
         return serviceRepository.findServicebyId(service?.cservice)
     }
 
-    fun updateService(service: Service?): Boolean {
-        var flagUpdate = false
-        if(service != null) {
-            serviceRepository.save(service)
-            flagUpdate = true
+    fun saveOrUpdateService(service: Service?): Service? {
+        var serviceResponse = Service()
+        if (service !=null) {
+            serviceResponse = serviceRepository.save(service)
         }
-        return flagUpdate
+        return serviceResponse
     }
+
 }
